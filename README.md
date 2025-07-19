@@ -7,6 +7,7 @@ Welcome to my repository for CIS 1500—a Java-based programming class. This rep
 - [Why I Am Taking This Class](#why-i-am-taking-this-class)
 - [Projects](#projects)
 - [Labs](#labs)
+- [Photos](#photos)
 
 ## About the Class
 
