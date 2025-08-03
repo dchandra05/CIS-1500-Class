@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>HorseFenceCalculator.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HorseFenceCalculator.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">HorseFenceCalculator </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">// Ask for length and width of the fenced area</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the length of the fenced area (in feet): &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">length </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the width of the fenced area (in feet): &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">width </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s3">// Ask how far apart they want their posts to be</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the distance between posts (in feet): &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">postDistance </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s3">// Validate if the post distance divides the perimeter evenly</span>
+            <span class="s0">double </span><span class="s1">perimeter </span><span class="s2">= </span><span class="s5">2 </span><span class="s2">* (</span><span class="s1">length </span><span class="s2">+ </span><span class="s1">width</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">perimeter </span><span class="s2">% </span><span class="s1">postDistance </span><span class="s2">!= </span><span class="s5">0</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error: The distance between posts does not divide the perimeter evenly. Please run the program again.&quot;</span><span class="s2">);</span>
+                <span class="s0">return</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Calculate number of posts</span>
+            <span class="s0">int </span><span class="s1">numberOfPosts </span><span class="s2">= (</span><span class="s0">int</span><span class="s2">) (</span><span class="s1">perimeter </span><span class="s2">/ </span><span class="s1">postDistance</span><span class="s2">);</span>
+
+            <span class="s3">// Ask for the board length</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the length of each board (in feet): &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">boardLength </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s3">// Validate if the board length is greater than the post distance</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">boardLength </span><span class="s2">&lt; </span><span class="s1">postDistance</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error: The board length cannot be shorter than the distance between posts. Please run the program again.&quot;</span><span class="s2">);</span>
+                <span class="s0">return</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Calculate number of boards needed for one row</span>
+            <span class="s0">int </span><span class="s1">boardsPerRow </span><span class="s2">= (</span><span class="s0">int</span><span class="s2">) </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">ceil</span><span class="s2">(</span><span class="s1">perimeter </span><span class="s2">/ </span><span class="s1">boardLength</span><span class="s2">);</span>
+
+            <span class="s3">// Ask how many boards they want across each post</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the number of boards to run across each post: &quot;</span><span class="s2">);</span>
+            <span class="s0">int </span><span class="s1">boardsAcross </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+            <span class="s3">// Ask for cost of each post and board</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the cost of each post: &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">postCost </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Enter the cost of each board: &quot;</span><span class="s2">);</span>
+            <span class="s0">double </span><span class="s1">boardCost </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+            <span class="s3">// Calculate the total number of boards needed</span>
+            <span class="s0">int </span><span class="s1">totalBoards </span><span class="s2">= </span><span class="s1">boardsPerRow </span><span class="s2">* </span><span class="s1">boardsAcross</span><span class="s2">;</span>
+
+            <span class="s3">// Calculate total costs</span>
+            <span class="s0">double </span><span class="s1">totalPostCost </span><span class="s2">= </span><span class="s1">numberOfPosts </span><span class="s2">* </span><span class="s1">postCost</span><span class="s2">;</span>
+            <span class="s0">double </span><span class="s1">totalBoardCost </span><span class="s2">= </span><span class="s1">totalBoards </span><span class="s2">* </span><span class="s1">boardCost</span><span class="s2">;</span>
+            <span class="s0">double </span><span class="s1">grandTotal </span><span class="s2">= </span><span class="s1">totalPostCost </span><span class="s2">+ </span><span class="s1">totalBoardCost</span><span class="s2">;</span>
+
+            <span class="s3">// Output the results</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Fence Cost Breakdown ---&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Total number of posts needed: &quot; </span><span class="s2">+ </span><span class="s1">numberOfPosts</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Total number of boards needed: &quot; </span><span class="s2">+ </span><span class="s1">totalBoards</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Total cost for posts: $&quot; </span><span class="s2">+ </span><span class="s1">totalPostCost</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Total cost for boards: $&quot; </span><span class="s2">+ </span><span class="s1">totalBoardCost</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Grand total cost for the project: $&quot; </span><span class="s2">+ </span><span class="s1">grandTotal</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">finally </span><span class="s2">{</span>
+            <span class="s1">scanner</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
