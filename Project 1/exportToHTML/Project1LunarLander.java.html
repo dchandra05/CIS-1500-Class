@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Project1LunarLander.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Project1LunarLander.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Random</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Project1LunarLander </span><span class="s2">{</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+        <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s0">boolean </span><span class="s1">playAgain</span><span class="s2">;</span>
+
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s3">// Initialize the starting values</span>
+            <span class="s0">int </span><span class="s1">distance </span><span class="s2">= </span><span class="s4">10</span><span class="s2">;</span>
+            <span class="s0">int </span><span class="s1">xTilt </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s4">21</span><span class="s2">) - </span><span class="s4">10</span><span class="s2">; </span><span class="s3">// Random value between -10 and 10</span>
+            <span class="s0">int </span><span class="s1">yTilt </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s4">21</span><span class="s2">) - </span><span class="s4">10</span><span class="s2">; </span><span class="s3">// Random value between -10 and 10</span>
+            <span class="s0">boolean </span><span class="s1">selfDestructActive </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+            <span class="s1">String cancellationCode </span><span class="s2">= </span><span class="s5">&quot;1234&quot;</span><span class="s2">; </span><span class="s3">// Set the cancellation code for self-destruct</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Welcome to the Lunar Lander Simulator!&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Initial Distance: &quot; </span><span class="s2">+ </span><span class="s1">distance </span><span class="s2">+ </span><span class="s5">&quot; units from surface.&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Initial X-Axis Tilt: &quot; </span><span class="s2">+ </span><span class="s1">xTilt</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Initial Y-Axis Tilt: &quot; </span><span class="s2">+ </span><span class="s1">yTilt</span><span class="s2">);</span>
+
+            <span class="s3">// Main game loop</span>
+            <span class="s0">while </span><span class="s2">(</span><span class="s1">distance </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">) {</span>
+                <span class="s0">if </span><span class="s2">(!</span><span class="s1">selfDestructActive</span><span class="s2">) {</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;</span><span class="s0">\n</span><span class="s5">Enter a command: &quot;</span><span class="s2">);</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Valid commands: 'x+', 'x-', 'y+', 'y-', 'thruster', 'do nothing', 'self-destruct'&quot;</span><span class="s2">);</span>
+
+                    <span class="s1">String command </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+
+                    <span class="s0">switch </span><span class="s2">(</span><span class="s1">command</span><span class="s2">) {</span>
+                        <span class="s0">case </span><span class="s5">&quot;x+&quot;</span><span class="s2">:</span>
+                            <span class="s1">xTilt</span><span class="s2">++;</span>
+                            <span class="s1">distance</span><span class="s2">--;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;x-&quot;</span><span class="s2">:</span>
+                            <span class="s1">xTilt</span><span class="s2">--;</span>
+                            <span class="s1">distance</span><span class="s2">--;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;y+&quot;</span><span class="s2">:</span>
+                            <span class="s1">yTilt</span><span class="s2">++;</span>
+                            <span class="s1">distance</span><span class="s2">--;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;y-&quot;</span><span class="s2">:</span>
+                            <span class="s1">yTilt</span><span class="s2">--;</span>
+                            <span class="s1">distance</span><span class="s2">--;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;thruster&quot;</span><span class="s2">:</span>
+                            <span class="s1">distance </span><span class="s2">+= </span><span class="s4">2</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;do nothing&quot;</span><span class="s2">:</span>
+                            <span class="s1">distance</span><span class="s2">--;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s5">&quot;self-destruct&quot;</span><span class="s2">:</span>
+                            <span class="s1">selfDestructActive </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Self-destruct sequence activated. Enter cancellation code to stop:&quot;</span><span class="s2">);</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">default</span><span class="s2">:</span>
+                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Invalid command. Please enter one of the following commands: 'x+', 'x-', 'y+', 'y-', 'thruster', 'do nothing', 'self-destruct'&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Self-destruct active. Enter cancellation code:&quot;</span><span class="s2">);</span>
+                    <span class="s1">String enteredCode </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">enteredCode</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">cancellationCode</span><span class="s2">)) {</span>
+                        <span class="s1">selfDestructActive </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Self-destruct sequence canceled.&quot;</span><span class="s2">);</span>
+                    <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Incorrect code. You cannot perform other commands until you cancel self-destruct.&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+
+                <span class="s3">// Display current state</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">distance </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">) {</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Distance to surface: &quot; </span><span class="s2">+ </span><span class="s1">distance</span><span class="s2">);</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;X-Axis Tilt: &quot; </span><span class="s2">+ </span><span class="s1">xTilt</span><span class="s2">);</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Y-Axis Tilt: &quot; </span><span class="s2">+ </span><span class="s1">yTilt</span><span class="s2">);</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Check for landing conditions</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">xTilt </span><span class="s2">== </span><span class="s4">0 </span><span class="s2">&amp;&amp; </span><span class="s1">yTilt </span><span class="s2">== </span><span class="s4">0</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Congratulations! You have successfully landed the lunar lander.&quot;</span><span class="s2">);</span>
+            <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;You have crashed! X or Y tilt was not zero.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Ask if the player wants to play again</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;</span><span class="s0">\n</span><span class="s5">Would you like to play again? (yes/no)&quot;</span><span class="s2">);</span>
+            <span class="s1">String playAgainInput </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+            <span class="s1">playAgain </span><span class="s2">= </span><span class="s1">playAgainInput</span><span class="s2">.</span><span class="s1">equalsIgnoreCase</span><span class="s2">(</span><span class="s5">&quot;yes&quot;</span><span class="s2">);</span>
+
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">playAgain</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Thank you for playing the Lunar Lander Simulator!&quot;</span><span class="s2">);</span>
+        <span class="s1">scanner</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
