@@ -6,7 +6,6 @@ Welcome to my repository for CIS 1500—a Java-based programming class. This rep
 - [About the Class](#about-the-class)
 - [Why I Am Taking This Class](#why-i-am-taking-this-class)
 - [Projects](#projects)
-- [Labs](#labs)
 - [Photos](#photos)
 
 ## About the Class
@@ -21,11 +20,6 @@ Most of my classes so far have focused on programming with Python, which is grea
 
 Explore my class projects [here](./projects/).  
 > *(Click the link above to view the directory where I showcase Java projects completed for this class.)*
-
-## Labs
-
-Check out the labs and practice problems [here](./labs/).  
-> *(Click to see my work on weekly labs and exercises.)*
 
 ## Photos
 
